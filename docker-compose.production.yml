@@ -12,23 +12,21 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: vglazasmotri/kittygram_backend
     env_file: .env
     volumes:
       - static:/backend_static/
-      - media:/backend_media/
-    depends_on:
-      - db
+      - media:/app/media/
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: vglazasmotri/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    build: ./nginx/
+    image: vglazasmotri/kittygram_gateway
     ports:
       - 9000:80
     volumes:
-      - static:/static
-      - media:/media
+      - static:/staticfiles
+      - media:/app/media/
