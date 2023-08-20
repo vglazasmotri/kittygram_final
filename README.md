@@ -38,7 +38,7 @@ DB_NAME=kittygram
 DB_HOST=db
 DB_PORT=5432
 SECRET_KEY=secret_key
-ALLOWED_HOSTS="'***.*.*.*','127.0.0.1','localhost','you_domen'"
+ALLOWED_HOSTS="***.*.*.*,127.0.0.1,localhost,you_domen"
 DEBUG=False
 # для Docker:
 BACKEND_PORT=9000
@@ -77,7 +77,7 @@ cd ../nginx
 make build push
 ```
 
-## Чтобы запустить Docker Compose на локальном компьютере:
+## Запуск проекта на локальном компьютере:
 
 ```
 cd ..
@@ -88,7 +88,13 @@ docker compose -f docker-compose.production.yml up
 
 ```
 docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+```
+
+```
 docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+```
+
+```
 docker compose -f docker-compose.production.yml exec backend python manage.py migrate
 ```
 
@@ -143,7 +149,13 @@ sudo docker compose -f docker-compose.production.yml up -d
 
 ```
 sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
+```
+
+```
 sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+```
+
+```
 sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
 ```
 
