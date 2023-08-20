@@ -13,6 +13,7 @@ services:
       - pg_data:/var/lib/postgresql/data
   backend:
     image: vglazasmotri/kittygram_backend
+    restart: unless-stopped
     env_file: .env
     volumes:
       - static:/backend_static/
@@ -25,8 +26,9 @@ services:
       - static:/frontend_static
   gateway:
     image: vglazasmotri/kittygram_gateway
+    restart: unless-stopped
     ports:
-      - 9000:80
+      - "${BACKEND_PORT}:${HTTP_PORT}"
     volumes:
       - static:/staticfiles
       - media:/app/media/
