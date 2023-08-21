@@ -12,4 +12,4 @@ COPY . .
 
 RUN apt update && apt install -y make
 
-CMD make run
+CMD make run_${BACKEND_PORT}

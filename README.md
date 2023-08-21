@@ -46,11 +46,10 @@ HTTP_PORT=80
 DOCKER_USERNAME=dockerhub_username
 APPLICATION_NAME=kittygram
 ```
-## Настройка порта и имени wsgi для запуска gunicorn
-В файле /backend/Makefile при необходимости изменить значения:
+## Имя wsgi для запуска gunicorn
+В файле /backend/Makefile при необходимости изменить значение:
 
 ```
-BACKEND_PORT=9000
 WSGI_APPLICATION=kittygram_backend.wsgi
 ```
 
