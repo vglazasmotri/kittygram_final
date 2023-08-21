@@ -46,6 +46,13 @@ HTTP_PORT=80
 DOCKER_USERNAME=dockerhub_username
 APPLICATION_NAME=kittygram
 ```
+## Настройка порта и имени wsgi для запуска gunicorn
+В файле /backend/Makefile при необходимости изменить значения:
+
+```
+BACKEND_PORT=9000
+WSGI_APPLICATION=kittygram_backend.wsgi
+```
 
 ## Установить пакет Make:
 
@@ -133,11 +140,11 @@ sudo apt-get install docker-compose-plugin
 
 ```
 scp -i path_to_SSH/SSH_name docker-compose.production.yml username@server_ip:/home/username/kittygram/docker-compose.production.yml
+```
 * ath_to_SSH — путь к файлу с SSH-ключом;
 * SSH_name — имя файла с SSH-ключом (без расширения);
 * username — ваше имя пользователя на сервере;
 * server_ip — IP вашего сервера.
-```
 
 ## Запустите docker compose в режиме демона:
 
